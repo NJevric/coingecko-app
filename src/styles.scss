@@ -2,3 +2,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-group{
+  @apply flex flex-col mb-3;
+  &:last-of-type{
+    @apply mb-0;
+  }
+  label{
+    @apply mb-1;
+  }
+  input{
+    @apply py-3 px-4 rounded-md border border-gray-900/10;
+  }
+  .err{
+    @apply text-red-500 text-sm mt-1 font-medium;
+  }
+}
+.form-groups{
+  @apply flex flex-col md:flex-row md:justify-between;
+  .form-group{
+    @apply w-48;
+  }
+}
+.btn-success{
+  @apply bg-blue-500 text-white py-3 px-4 w-full rounded-md font-medium;
+  transition: .4s ease;
+  &:hover{
+    @apply bg-blue-600;
+  }
+}

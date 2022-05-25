@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './services/auth/auth.service';
 import { PingService } from './services/ping/ping.service';
 
 @Component({
@@ -8,22 +9,12 @@ import { PingService } from './services/ping/ping.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'coingecko-api';
-  tag:string = '';
-  constructor(private pingService: PingService){}
+
+  constructor(private pingService: PingService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    console.log('a');
-    console.log(environment.apiUrl);
-    this.getData();
-
+    this.authService.autoLogin();
   }
 
-  public getData(){
-    this.pingService.getPing().subscribe((response:any)=>{
-      console.log(response);
-      this.tag = response.gecko_says;
-      console.log(this.tag);12
-    })
-  }
+
 }
